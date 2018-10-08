@@ -1,33 +1,22 @@
 package com.esolutions.trainings.jsc2.model;
-
-import java.util.ArrayList;
+import java.util.Map;
 
 public class Floor {
 
-    private long floorNumber;
-    private ArrayList<Room> rooms;
+    private Map<Long,Room> rooms;
 
-    public Floor(long floorNumber, ArrayList<Room> rooms) {
-        this.floorNumber = floorNumber;
+    public Floor(Map<Long, Room> rooms) {
         this.rooms = rooms;
     }
 
     public Floor() {
     }
 
-    public long getFloorNumber() {
-        return floorNumber;
-    }
-
-    public void setFloorNumber(long floorNumber) {
-        this.floorNumber = floorNumber;
-    }
-
-    public ArrayList<Room> getRooms() {
+    public Map<Long, Room> getRooms() {
         return rooms;
     }
 
-    public void setRooms(ArrayList<Room> rooms) {
+    public void setRooms(Map<Long, Room> rooms) {
         this.rooms = rooms;
     }
 }
