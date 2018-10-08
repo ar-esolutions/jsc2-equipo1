@@ -1,23 +1,23 @@
 package com.esolutions.trainings.jsc2.model;
 
-import java.util.ArrayList;
+import java.util.Map;
 
 public class Hotel {
 
-    private ArrayList<Floor> floors;
+        private Map<Long,Floor> floors;
 
     public Hotel() {
     }
 
-    public Hotel(ArrayList<Floor> floors) {
+    public Hotel(Map<Long, Floor> floors) {
         this.floors = floors;
     }
 
-    public ArrayList<Floor> getFloors() {
+    public Map<Long, Floor> getFloors() {
         return floors;
     }
 
-    public void setFloors(ArrayList<Floor> floors) {
+    public void setFloors(Map<Long, Floor> floors) {
         this.floors = floors;
     }
 }
