@@ -1,6 +1,7 @@
 package com.esolutions.trainings.jsc2.web;
 
 import com.esolutions.trainings.jsc2.logic.RoomRepeatedService;
+import com.esolutions.trainings.jsc2.logic.WifiPasswordLogic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,4 +24,10 @@ public class RoomController {
          this.service.busquedaRooms(floor, room);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/floors/{floor}/rooms/{room}/wifi/password")
+    @ResponseBody
+    public String calculatePassword(@PathVariable int floor, @PathVariable int room) {
+        WifiPasswordLogic wifi = new WifiPasswordLogic();
+        return wifi.calculatePassword(floor,room);
+    }
 }
