@@ -33,6 +33,17 @@ public class WifiPasswordLogic {
     }
 
     private int countOccurrences(String cadena){
+        /*int count = 0;
+        int j = 4;
+        for (int i = 0; i < cadena.length() - 3; i++) {
+            String subcadena = cadena.substring(i, j);
+            if(subcadena.equals("JAVA")) {
+                count++;
+            }
+            j++;
+        }
+        return count;
+        */
         return org.springframework.util.StringUtils.countOccurrencesOf(cadena, "JAVA");
     }
 }
