@@ -30,4 +30,10 @@ public class RoomController {
         WifiPasswordLogic wifi = new WifiPasswordLogic();
         return wifi.calculatePassword(floor,room);
     }
+    @RequestMapping(method = RequestMethod.POST, value = "/desde/{desde}/hasta/{hasta}/tipo/{tipo}/book")
+    public void getPrecio(@PathVariable String desde, @PathVariable String hasta, @PathVariable String tipo){
+
+        this.service.precioDeReserva(desde, hasta, tipo);
+    }
+
 }
