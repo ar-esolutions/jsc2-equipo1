@@ -8,6 +8,16 @@ CREATE TABLE rooms (
 	type        VARCHAR2(10) NOT NULL
 );
 
+-- Create table Reservation
+CREATE TABLE Reservation (
+	id          INTEGER PRIMARY KEY AUTO_INCREMENT,
+	floor       INTEGER NOT NULL,
+	nro         INTEGER NOT NULL,
+	fecha_entrada DATE NOT NULL,
+	fecha_salida DATE NOT NULL
+);
+
+
 --changeset mpianello:2
 INSERT INTO rooms VALUES (1, 1, 1, 'ESTANDAR');
 INSERT INTO rooms VALUES (2, 1, 2, 'ESTANDAR');
