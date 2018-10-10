@@ -1,9 +1,10 @@
 package com.esolutions.trainings.jsc2.model;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class Floor {
 
-    private Map<Long,Room> rooms;
+    private Map<Long,Room> rooms= new TreeMap<>();
 
     public Floor(Map<Long, Room> rooms) {
         this.rooms = rooms;

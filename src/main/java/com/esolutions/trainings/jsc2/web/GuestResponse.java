@@ -3,6 +3,9 @@ package com.esolutions.trainings.jsc2.web;
 public class GuestResponse {
     private Integer guest;
 
+    public GuestResponse() {
+    }
+
     public GuestResponse(Integer guest) {
         this.guest = guest;
     }

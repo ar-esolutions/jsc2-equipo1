@@ -5,6 +5,8 @@ import com.esolutions.trainings.jsc2.logic.WifiPasswordLogic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import static com.esolutions.trainings.jsc2.logic.HaveANiceDayHotel.getGuestResponse;
+
 @RestController
 public class RoomController {
     private final RoomRepeatedService service;
@@ -13,12 +15,12 @@ public class RoomController {
     public RoomController(RoomRepeatedService service) {
         this.service = service;
     }
-/*
+
     @GetMapping(value = "/floors/{floor}/rooms/{room}")
     public GuestResponse getGuestNumber(@PathVariable int floor, @PathVariable int room){
-        return new GuestResponse(null);
+        return getGuestResponse(floor,room);
     }
-*/
+
     @RequestMapping(method = RequestMethod.POST, value = "/floors/{floor}/rooms/{room}/book")
     public void getRoomAndFloor(@PathVariable int floor, @PathVariable int room){
          this.service.busquedaRooms(floor, room);

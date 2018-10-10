@@ -10,6 +10,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 public class Jsc2App {
 	public static void main(String[] args) {
 		SpringApplication.run(Jsc2App.class, args);
+
 	}
 
 }

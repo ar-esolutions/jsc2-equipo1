@@ -1,10 +1,11 @@
 package com.esolutions.trainings.jsc2.model;
 
 import java.util.Map;
+import java.util.TreeMap;
 
 public class Hotel {
 
-        private Map<Long,Floor> floors;
+        private Map<Long,Floor> floors= new TreeMap<>();
 
     public Hotel() {
     }
