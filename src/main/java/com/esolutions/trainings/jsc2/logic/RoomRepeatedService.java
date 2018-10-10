@@ -53,7 +53,7 @@ public class RoomRepeatedService {
 
         int diasPromo = 0;
 
-        for(int i = 0; i <= resDias; i++){
+        for(int i = 0; i < resDias; i++){
 
             if(contador == 6 || contador == 7 || contador == 1){
 
@@ -69,12 +69,12 @@ public class RoomRepeatedService {
 
         int diasSinPromo = resDias - diasPromo;
 
-        if(tipo.equals("suite")){
+        if(tipo.equals("SUITE")){
 
             return diasSinPromo*pSuiteSinPromo + diasPromo*pSuitePromo;
         }else{
 
-            return diasSinPromo*pEstPromo + diasPromo*pEstSinPromo;
+            return diasSinPromo*pEstSinPromo + diasPromo*pEstPromo;
         }
 	}
 
