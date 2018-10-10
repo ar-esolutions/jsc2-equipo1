@@ -51,24 +51,28 @@ public class ReservaRepeatedService {
 		return fecha;
 	}
 
+    private Calendar dateToCalendar(Date date) {
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return calendar;
+
+    }
+
 	private boolean validarIntervaloDeReserva(List<JPAReserva> reservas, Calendar fechaDesdeConsulta,
                                               Calendar fechaHastaConsulta){
-/*        Iterator<JPAReserva> i = reservas.iterator();
+        Iterator<JPAReserva> i = reservas.iterator();
         JPAReserva r = null;
+        boolean flag = true;
         while(i.hasNext() ){
             r = i.next();
-            if (r.getFloor() == floor && r.getNro() == room){
-                newReserva.setNro(room);
-                newReserva.setFloor(floor);
-                newReserva.setFecha_salida(r.getFecha_salida());
-                newReserva.setFecha_entrada(r.getFecha_entrada());
-                reservas.add(newReserva);
-
+            Calendar fechaDesde = dateToCalendar(r.getFecha_entrada());
+            Calendar fechaHasta = dateToCalendar(r.getFecha_salida());
+            if(!validarIntervaloFechas(fechaDesde, fechaHasta,fechaDesdeConsulta, fechaHastaConsulta)){
+                flag = false;
             }
-
         }
-        */
-        return true;
+        return flag;
     }
 
 	private boolean validarIntervaloFechas(Calendar fechaDesdeReserva, Calendar fechaHastaReserva,
