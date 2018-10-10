@@ -111,4 +111,56 @@ public class ReservaRepeatedService {
 
 	}
 
+	@Autowired
+	public boolean validarReserva(int floor, int room, String desde, String hasta, RoomRepeatedService rrs){
+
+		List<JPAReserva> reservas = buscarReserva(floor, room);
+
+		if(reservas.size() == 0){ //No existe reserva
+
+			guardarReserva(floor, room, desde, hasta); //Crea reserva
+
+			return true;
+
+		}else{
+
+			Calendar cDesde = Calendar.getInstance();
+			Calendar cHasta = Calendar.getInstance();
+
+			this.parseCalendar(convertir(desde),cDesde);
+			this.parseCalendar(convertir(hasta),cHasta);
+
+			boolean valido = validarIntervaloDeReserva(reservas, cDesde, cHasta);
+
+			if(valido == false){
+
+				return false;
+			}
+
+			guardarReserva(floor, room, desde, hasta); //Crea reserva
+
+			return true;
+		}
+
+	}
+
+	private void parseCalendar(int[] fecha,Calendar calendar){
+
+		calendar.set(fecha[0], fecha[1] - 1, fecha[2]);
+	}
+
+	public int[] convertir(String fecha){
+
+		int[] aux = new int[3];
+
+		String[] a = fecha.split("-");
+
+		for(int i = 0;i < a.length; i++){
+
+			aux[i] = Integer.parseInt(a[i].trim());
+		}
+
+		return aux;
+	}
+
 }

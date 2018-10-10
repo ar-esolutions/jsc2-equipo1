@@ -1,5 +1,6 @@
 package com.esolutions.trainings.jsc2.logic;
 
+import com.esolutions.trainings.jsc2.model.JPAReserva;
 import com.esolutions.trainings.jsc2.model.JPARoom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -40,6 +41,7 @@ public class RoomRepeatedService {
 		//Write your code here!
 	}
 
+	@Autowired
 	public double precioDeReserva(String desde, String hasta, String tipo){
 
 	    int precio = 0;
@@ -101,4 +103,7 @@ public class RoomRepeatedService {
 
         return resDias;
 	}
+
+
+
 }
