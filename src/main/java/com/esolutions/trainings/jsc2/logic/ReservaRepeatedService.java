@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -49,6 +50,36 @@ public class ReservaRepeatedService {
 		}
 		return fecha;
 	}
+
+	private boolean validarIntervaloDeReserva(List<JPAReserva> reservas, Calendar fechaDesdeConsulta,
+                                              Calendar fechaHastaConsulta){
+/*        Iterator<JPAReserva> i = reservas.iterator();
+        JPAReserva r = null;
+        while(i.hasNext() ){
+            r = i.next();
+            if (r.getFloor() == floor && r.getNro() == room){
+                newReserva.setNro(room);
+                newReserva.setFloor(floor);
+                newReserva.setFecha_salida(r.getFecha_salida());
+                newReserva.setFecha_entrada(r.getFecha_entrada());
+                reservas.add(newReserva);
+
+            }
+
+        }
+        */
+        return true;
+    }
+
+	private boolean validarIntervaloFechas(Calendar fechaDesdeReserva, Calendar fechaHastaReserva,
+                                      Calendar fechaDesdeConsulta, Calendar fechaHastaConsulta){
+	    if((fechaHastaConsulta.compareTo(fechaDesdeReserva) < 0) && ((fechaHastaReserva.compareTo(fechaDesdeConsulta)) < 0)){
+	        return true;
+        }
+        else{
+            return false;
+        }
+    }
 
 
 	public List<JPAReserva> buscarReserva(int floor, int room) {
