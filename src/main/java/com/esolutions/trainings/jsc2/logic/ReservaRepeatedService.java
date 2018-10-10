@@ -111,8 +111,7 @@ public class ReservaRepeatedService {
 
 	}
 
-	@Autowired
-	public boolean validarReserva(int floor, int room, String desde, String hasta, RoomRepeatedService rrs){
+	public boolean validarReserva(int floor, int room, String desde, String hasta){
 
 		List<JPAReserva> reservas = buscarReserva(floor, room);
 

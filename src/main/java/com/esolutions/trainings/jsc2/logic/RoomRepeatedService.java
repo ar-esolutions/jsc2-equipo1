@@ -41,7 +41,6 @@ public class RoomRepeatedService {
 		//Write your code here!
 	}
 
-	@Autowired
 	public double precioDeReserva(String desde, String hasta, String tipo){
 
 	    int precio = 0;
