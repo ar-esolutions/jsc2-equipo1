@@ -51,4 +51,29 @@ public class ReservaRepeatedService {
 	}
 
 
+	public List<JPAReserva> buscarReserva(int floor, int room) {
+
+		Date fecha_entrada = null;
+		List <JPAReserva> reservas = null;
+		JPAReserva newReserva = new JPAReserva();
+
+		final List<JPAReserva> allJPAReserva = this.repository.findAll();
+		Iterator<JPAReserva> i = allJPAReserva.iterator();
+		JPAReserva r = null;
+		while(i.hasNext() ){
+			r = i.next();
+			if (r.getFloor() == floor && r.getNro() == room){
+				newReserva.setNro(room);
+				newReserva.setFloor(floor);
+				newReserva.setFecha_salida(r.getFecha_salida());
+				newReserva.setFecha_entrada(r.getFecha_entrada());
+				reservas.add(newReserva);
+
+			}
+
+		}
+		return reservas;
+
+	}
+
 }
