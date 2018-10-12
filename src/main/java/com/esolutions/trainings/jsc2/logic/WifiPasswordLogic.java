@@ -1,11 +1,23 @@
 package com.esolutions.trainings.jsc2.logic;
 
-public class WifiPasswordLogic {
+import com.esolutions.trainings.jsc2.web.WifiPasswordResponse;
 
-    public String calculatePassword(int floor, int room) {
+public class WifiPasswordLogic {
+    private int floor;
+    private int room;
+
+    public WifiPasswordResponse calculatePassword(int floor, int room) {
         String cadena = iterate(floor + room);
         int count = countOccurrences(cadena);
-        return "PASS-" + floor + "-" + room + "-" + count;
+        return new WifiPasswordResponse("PASS-" + floor + "-" + room + "-" + count);
+    }
+
+    public WifiPasswordLogic() {
+    }
+
+    public WifiPasswordLogic(int floor, int room) {
+        this.floor = floor;
+        this.room = room;
     }
 
     private String iterate(int cant) {
