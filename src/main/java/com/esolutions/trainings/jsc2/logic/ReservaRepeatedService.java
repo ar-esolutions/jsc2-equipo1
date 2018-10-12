@@ -9,10 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class ReservaRepeatedService {
@@ -87,9 +84,8 @@ public class ReservaRepeatedService {
 
 
 	public List<JPAReserva> buscarReserva(int floor, int room) {
-
-		Date fecha_entrada = null;
-		List <JPAReserva> reservas = null;
+		//Esto no estaba inicializado , por eso tiraba null exception
+		List <JPAReserva> reservas = new ArrayList<>();
 		JPAReserva newReserva = new JPAReserva();
 
 		final List<JPAReserva> allJPAReserva = this.repository.findAll();

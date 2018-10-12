@@ -26,7 +26,9 @@ public class HaveANiceDayHotel {
         Map<Long, Long> lastRoomOfFloor = new TreeMap<>();
 
         for (long currentGuest = 1; currentGuest <= 50000; currentGuest++) {
+
             long currentFloor = 1L;
+
             if (currentGuest == 1L) {
                 addFirstGuestIfExists(hotel, currentGuest, lastGuestOfFloor, lastRoomOfFloor);
             } else {

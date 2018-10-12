@@ -2,8 +2,13 @@ package com.esolutions.trainings.jsc2.web;
 
 import com.esolutions.trainings.jsc2.logic.RoomRepeatedService;
 import com.esolutions.trainings.jsc2.logic.WifiPasswordLogic;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
+import java.util.TreeMap;
 
 import static com.esolutions.trainings.jsc2.logic.HaveANiceDayHotel.getGuestResponse;
 
@@ -12,7 +17,7 @@ public class RoomController {
     private final RoomRepeatedService service;
 
     @Autowired
-    public RoomController(RoomRepeatedService service) {
+    public RoomController(RoomRepeatedService service ) {
         this.service = service;
     }
 
@@ -21,11 +26,12 @@ public class RoomController {
         return getGuestResponse(floor,room);
     }
 
+    /*
     @RequestMapping(method = RequestMethod.POST, value = "/floors/{floor}/rooms/{room}/book")
     public void getRoomAndFloor(@PathVariable int floor, @PathVariable int room){
          this.service.busquedaRooms(floor, room);
     }
-
+*/
     @RequestMapping(method = RequestMethod.GET, path = "/floors/{floor}/rooms/{room}/wifi/password")
     @ResponseBody
     public String calculatePassword(@PathVariable int floor, @PathVariable int room) {
@@ -37,5 +43,9 @@ public class RoomController {
 
         this.service.precioDeReserva(desde, hasta, tipo);
     }
+
+
+
+
 
 }

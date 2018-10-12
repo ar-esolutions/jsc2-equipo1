@@ -26,9 +26,9 @@ public class RoomRepeatedService {
 
 	public String busquedaRooms(int floor, int room) {
 		String tipo = "";
-		final List<JPARoom> allJPARooms = this.repository.findAll();
+		final List<JPARoom> allJPARooms = repository.findAll();
 		Iterator<JPARoom> i = allJPARooms.iterator();
-		JPARoom r = null;
+		JPARoom r;
 		while(i.hasNext() ){
 			r = i.next();
 			if (r.getFloor() == floor && r.getNro() == room){

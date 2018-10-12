@@ -2,11 +2,13 @@ package com.esolutions.trainings.jsc2.logic;
 
 import com.esolutions.trainings.jsc2.model.Guest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class GuestRepeatedService {
@@ -20,10 +22,8 @@ public class GuestRepeatedService {
 	public void alphabeticallySortedRepeatedGuestsByLastName() {
 		final List<Guest> allGuests = this.repository.findAll();
 
-
 		//Write your code here!
 	}
-
 
 
 }
