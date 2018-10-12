@@ -26,7 +26,7 @@ public class GuestRepeatedService {
 	}
 
 
-	public String parseBinaryFloorAndRoom(int floor, int room){
+	private String parseBinaryFloorAndRoom(int floor, int room){
 
 		String binaryFloor = Integer.toBinaryString(floor);  // Paso el int floor a binario y lo guardo en string
 		String binaryRoom = Integer.toBinaryString(room);    // Paso el int room a binario y lo guardo en string
