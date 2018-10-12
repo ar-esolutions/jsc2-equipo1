@@ -43,12 +43,16 @@ public class GuestRepeatedService {
 		String concatenado = binaryFloor.concat(binaryRoom); // concateno los 2 string binaryFloor y binaryRoom
 		return concatenado;
 	}
+
+	//Toma el nombre completo y obtiene unicamente su apellido
 	private String getLastNameFromFullName(Guest guest){
 		String fullName = guest.getName();
 		return fullName.split(",")[0];
 	}
 
+	//Agrega mayuscula al primer digito de una cadena
 	private String upperCaseFirstDigit(String s){
+		s = s.toLowerCase();
 		return s.substring(0, 1).toUpperCase() + s.substring(1);
 	}
 
