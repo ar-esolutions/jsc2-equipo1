@@ -25,6 +25,15 @@ public class GuestRepeatedService {
 		//Write your code here!
 	}
 
+	private List<String> lastNameOfGuests(List<Guest> guests){
+		LinkedList<String> lastNames = new LinkedList<>();
+		for ( Guest g: guests) {
+			String lastName = getLastNameFromFullName(g);
+			lastName = upperCaseFirstDigit(lastName);
+			lastNames.add(lastName);
+		}
+		return lastNames;
+	}
 
 	private String parseBinaryFloorAndRoom(int floor, int room){
 
@@ -33,5 +42,13 @@ public class GuestRepeatedService {
 
 		String concatenado = binaryFloor.concat(binaryRoom); // concateno los 2 string binaryFloor y binaryRoom
 		return concatenado;
+	}
+	private String getLastNameFromFullName(Guest guest){
+		String fullName = guest.getName();
+		return fullName.split(",")[0];
+	}
+
+	private String upperCaseFirstDigit(String s){
+		return s.substring(0, 1).toUpperCase() + s.substring(1);
 	}
 }
