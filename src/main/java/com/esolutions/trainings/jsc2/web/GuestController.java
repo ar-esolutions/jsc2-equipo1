@@ -18,12 +18,8 @@ public class GuestController {
 		this.service = service;
 	}
 
-	@RequestMapping(method = RequestMethod.GET, path = "/guests/last-name/repeated")
-	public void repeatedLastName() {
-
-
-		this.service.alphabeticallySortedRepeatedGuestsByLastName();
-
-
-	}
+    @RequestMapping(method = RequestMethod.GET, path = "/guests/last-name/repeated")
+    public RepeatedGuest repeatedLastName() {
+        return service.returnMapOfRepetitionsOfGuest();
+    }
 }
