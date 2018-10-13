@@ -20,8 +20,10 @@ public class GuestController {
 
 	@RequestMapping(method = RequestMethod.GET, path = "/guests/last-name/repeated")
 	public void repeatedLastName() {
+
+
 		this.service.alphabeticallySortedRepeatedGuestsByLastName();
-		//Write your code here!
+
 
 	}
 }

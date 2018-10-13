@@ -1,7 +1,10 @@
 package com.esolutions.trainings.jsc2.web;
 
+import com.esolutions.trainings.jsc2.logic.GenerateKeyLogic;
 import com.esolutions.trainings.jsc2.logic.RoomRepeatedService;
 import com.esolutions.trainings.jsc2.logic.WifiPasswordLogic;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,11 +14,13 @@ import static com.esolutions.trainings.jsc2.logic.HaveANiceDayHotel.getGuestResp
 public class RoomController {
     private final RoomRepeatedService service;
     private final WifiPasswordLogic wifiService;
+    private final GenerateKeyLogic keyService;
 
     @Autowired
     public RoomController(RoomRepeatedService service) {
         this.service = service;
         this.wifiService = new WifiPasswordLogic();
+        this.keyService = new GenerateKeyLogic();
     }
 
     @GetMapping(value = "/floors/{floor}/rooms/{room}")
@@ -32,7 +37,7 @@ public class RoomController {
     @ResponseBody
     public WifiSsidResponse calculateSsid(@PathVariable int floor, @PathVariable int room) {
         //WifiPasswordLogic wifi = new WifiPasswordLogic();
-        return new WifiSsidResponse("hand-2-2-3");
+        return keyService.concatenateSsid(floor, room, 3);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/desde/{desde}/hasta/{hasta}/tipo/{tipo}/book")
