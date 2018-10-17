@@ -2,7 +2,7 @@ package com.esolutions.trainings.jsc2.logic;
 
 
 import com.esolutions.trainings.jsc2.model.JPAReserva;
-import com.esolutions.trainings.jsc2.model.JPARoom;
+import com.esolutions.trainings.jsc2.web.ReservationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -14,13 +14,16 @@ import java.util.*;
 @Service
 public class ReservaRepeatedService {
 	private final JpaRepository<JPAReserva, Long> repository;
+	private final RoomRepeatedService roomService;
 
 	@Autowired
-	public ReservaRepeatedService(JpaRepository<JPAReserva, Long> repository) {
+	public ReservaRepeatedService(JpaRepository<JPAReserva, Long> repository, RoomRepeatedService roomService) {
 		this.repository = repository;
+		this.roomService = roomService;
 	}
 
-	public void guardarReserva(int floor, int nro, String checkIn, String checkout){
+
+	private void guardarReserva(int floor, int nro, String checkIn, String checkout){
 		JPAReserva r = new JPAReserva();
 
 		r.setFloor(floor);
@@ -31,7 +34,7 @@ public class ReservaRepeatedService {
 
 	}
 
-	public Date parseFecha(String stfecha){
+	private Date parseFecha(String stfecha){
 
 		SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyyMMdd");
 		String strFecha = stfecha;
@@ -83,7 +86,7 @@ public class ReservaRepeatedService {
     }
 
 
-	public List<JPAReserva> buscarReserva(int floor, int room) {
+	private List<JPAReserva> buscarReserva(int floor, int room) {
 		//Esto no estaba inicializado , por eso tiraba null exception
 		List <JPAReserva> reservas = new ArrayList<>();
 		JPAReserva newReserva = new JPAReserva();
@@ -107,7 +110,7 @@ public class ReservaRepeatedService {
 
 	}
 
-	public boolean validarReserva(int floor, int room, String desde, String hasta){
+	private boolean validarReserva(int floor, int room, String desde, String hasta){
 
 		List<JPAReserva> reservas = buscarReserva(floor, room);
 
@@ -144,7 +147,7 @@ public class ReservaRepeatedService {
 		calendar.set(fecha[0], fecha[1] - 1, fecha[2]);
 	}
 
-	public int[] convertir(String fecha){
+	private int[] convertir(String fecha){
 
 		int[] aux = new int[3];
 
@@ -156,6 +159,24 @@ public class ReservaRepeatedService {
 		}
 
 		return aux;
+	}
+
+
+	public ReservationResponse getReservationResponse(int floor, int room, Map<String, String> parm) {
+		ReservationResponse reservationResponse = new ReservationResponse();
+		//Trae lo que hay escrito en el body
+		String checkIn = parm.get("checkIn");
+		String checkOut = parm.get("checkOut");
+
+
+		boolean reserved = validarReserva(floor, room, checkIn, checkOut);
+		String tipo = roomService.busquedaRooms(floor,room);
+		double precio = roomService.precioDeReserva(checkIn, checkOut, tipo);
+
+		reservationResponse.setBooked(reserved);
+		reservationResponse.setPrice(precio);
+
+		return reservationResponse;
 	}
 
 }
