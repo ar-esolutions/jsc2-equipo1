@@ -28,8 +28,8 @@ public class ReservaRepeatedService {
 
 		r.setFloor(floor);
 		r.setNro(nro);
-		r.setFecha_entrada(parseFecha(checkIn));
-		r.setFecha_salida(parseFecha(checkout));
+		r.setFechaEntrada(parseFecha(checkIn));
+		r.setFechaSalida(parseFecha(checkout));
 		repository.save(r);
 
 	}
@@ -66,8 +66,8 @@ public class ReservaRepeatedService {
         boolean flag = true;
         while(i.hasNext() ){
             r = i.next();
-            Calendar fechaDesde = dateToCalendar(r.getFecha_entrada());
-            Calendar fechaHasta = dateToCalendar(r.getFecha_salida());
+            Calendar fechaDesde = dateToCalendar(r.getFechaEntrada());
+            Calendar fechaHasta = dateToCalendar(r.getFechaSalida());
             if(!validarIntervaloFechas(fechaDesde, fechaHasta,fechaDesdeConsulta, fechaHastaConsulta)){
                 flag = false;
             }
@@ -77,12 +77,7 @@ public class ReservaRepeatedService {
 
 	private boolean validarIntervaloFechas(Calendar fechaDesdeReserva, Calendar fechaHastaReserva,
                                       Calendar fechaDesdeConsulta, Calendar fechaHastaConsulta){
-	    if((fechaHastaConsulta.compareTo(fechaDesdeReserva) < 0) && ((fechaHastaReserva.compareTo(fechaDesdeConsulta)) < 0)){
-	        return true;
-        }
-        else{
-            return false;
-        }
+		return (fechaHastaConsulta.compareTo(fechaDesdeReserva) < 0) && ((fechaHastaReserva.compareTo(fechaDesdeConsulta)) < 0);
     }
 
 
@@ -99,8 +94,8 @@ public class ReservaRepeatedService {
 			if (r.getFloor() == floor && r.getNro() == room){
 				newReserva.setNro(room);
 				newReserva.setFloor(floor);
-				newReserva.setFecha_salida(r.getFecha_salida());
-				newReserva.setFecha_entrada(r.getFecha_entrada());
+				newReserva.setFechaSalida(r.getFechaSalida());
+				newReserva.setFechaEntrada(r.getFechaEntrada());
 				reservas.add(newReserva);
 
 			}

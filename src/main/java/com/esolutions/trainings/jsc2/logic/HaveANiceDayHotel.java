@@ -26,7 +26,6 @@ public class HaveANiceDayHotel {
         Map<Long, Long> lastRoomOfFloor = new TreeMap<>();
 
         for (long currentGuest = 1; currentGuest <= 50000; currentGuest++) {
-
             long currentFloor = 1L;
 
             if (currentGuest == 1L) {
@@ -45,7 +44,7 @@ public class HaveANiceDayHotel {
         return guestResponse;
     }
 
-    private static boolean requestedRoomExists(long floor,long room, Hotel hotel) {
+    private static boolean requestedRoomExists(long floor, long room, Hotel hotel) {
         Floor requestFloor = hotel.getFloors().get(floor);
         if (requestFloor != null) {
             Room requestRoom = requestFloor.getRooms().get(room);
@@ -55,7 +54,7 @@ public class HaveANiceDayHotel {
     }
 
     private static void addGuestToFloor(Hotel hotel, Map<Long, Long> lastRoomOfFloor, Map<Long, Long> lastGuestOfFloor,
-                         long currentGuest, long currentFloor, Guest guest) {
+                                        long currentGuest, long currentFloor, Guest guest) {
 
         Long lastGuestId = lastGuestOfFloor.get(currentFloor);
 
@@ -108,25 +107,25 @@ public class HaveANiceDayHotel {
         lastRoomOfFloor.put(firstFloorNumber, firstRoomNumber);
     }
 
-    private static Hotel createHotel(){
+    private static Hotel createHotel() {
         return new Hotel(createFirstFloor());
     }
 
-    private static Map<Long, Floor> createFirstFloor(){
-        Map<Long,Floor> floors = new TreeMap<>();
+    private static Map<Long, Floor> createFirstFloor() {
+        Map<Long, Floor> floors = new TreeMap<>();
 
         Floor floor = new Floor(createFirstRoom());
-        floors.put(1L,floor);
+        floors.put(1L, floor);
 
         return floors;
     }
 
-    private static Map<Long, Room> createFirstRoom(){
+    private static Map<Long, Room> createFirstRoom() {
         Map<Long, Room> rooms = new TreeMap<>();
 
         Room room = new Room();
 
-        rooms.put(1L,room);
+        rooms.put(1L, room);
         return rooms;
     }
 }

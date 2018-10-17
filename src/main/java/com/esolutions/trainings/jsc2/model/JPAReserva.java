@@ -16,19 +16,19 @@ public class JPAReserva {
 	@Column(name = "nro", nullable = false, unique = true)
 	private int nro;
 
-	@Column(name = "fecha_entrada", nullable = false, unique = true)
-	private Date fecha_entrada;
+	@Column(name = "fechaEntrada", nullable = false, unique = true)
+	private Date fechaEntrada;
 
 
-	@Column(name = "fecha_salida", nullable = false, unique = true)
-	private Date fecha_salida;
+	@Column(name = "fechaSalida", nullable = false, unique = true)
+	private Date fechaSalida;
 
-	public JPAReserva(int id, int floor, int nro, Date fecha_entrada, Date fecha_salida) {
+	public JPAReserva(int id, int floor, int nro, Date fechaEntrada, Date fechaSalida) {
 		this.id = id;
 		this.floor = floor;
 		this.nro = nro;
-		this.fecha_entrada = fecha_entrada;
-		this.fecha_salida = fecha_salida;
+		this.fechaEntrada = fechaEntrada;
+		this.fechaSalida = fechaSalida;
 	}
 	public JPAReserva() {
 
@@ -58,19 +58,19 @@ public class JPAReserva {
 		this.nro = nro;
 	}
 
-	public Date getFecha_entrada() {
-		return fecha_entrada;
+	public Date getFechaEntrada() {
+		return fechaEntrada;
 	}
 
-	public void setFecha_entrada(Date fecha_entrada) {
-		this.fecha_entrada = fecha_entrada;
+	public void setFechaEntrada(Date fechaEntrada) {
+		this.fechaEntrada = fechaEntrada;
 	}
 
-	public Date getFecha_salida() {
-		return fecha_salida;
+	public Date getFechaSalida() {
+		return fechaSalida;
 	}
 
-	public void setFecha_salida(Date fecha_salida) {
-		this.fecha_salida = fecha_salida;
+	public void setFechaSalida(Date fechaSalida) {
+		this.fechaSalida = fechaSalida;
 	}
 }

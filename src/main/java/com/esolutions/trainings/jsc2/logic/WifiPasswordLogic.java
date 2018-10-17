@@ -44,7 +44,7 @@ public class WifiPasswordLogic {
         return cadena;
     }
 
-    private int countOccurrences(String cadena){
+    private int countOccurrences(String cadena) {
         /*int count = 0;
         int j = 4;
         for (int i = 0; i < cadena.length() - 3; i++) {

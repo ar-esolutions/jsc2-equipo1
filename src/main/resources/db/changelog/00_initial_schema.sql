@@ -13,8 +13,8 @@ CREATE TABLE Reservation (
 	id          INTEGER PRIMARY KEY AUTO_INCREMENT,
 	floor       INTEGER NOT NULL,
 	nro         INTEGER NOT NULL,
-	fecha_entrada DATE NOT NULL,
-	fecha_salida DATE NOT NULL
+	fechaEntrada DATE NOT NULL,
+	fechaSalida DATE NOT NULL
 );
 
 
