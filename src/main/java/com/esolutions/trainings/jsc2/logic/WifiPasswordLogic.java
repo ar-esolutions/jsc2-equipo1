@@ -3,59 +3,36 @@ package com.esolutions.trainings.jsc2.logic;
 import com.esolutions.trainings.jsc2.web.WifiPasswordResponse;
 
 public class WifiPasswordLogic {
-    private int floor;
-    private int room;
-
-    public WifiPasswordResponse calculatePassword(int floor, int room) {
-        String cadena = iterate(floor + room);
-        int count = countOccurrences(cadena);
-        return new WifiPasswordResponse("PASS-" + floor + "-" + room + "-" + count);
-    }
 
     public WifiPasswordLogic() {
     }
 
-    public WifiPasswordLogic(int floor, int room) {
-        this.floor = floor;
-        this.room = room;
+    public WifiPasswordResponse calculatePassword(int floor, int room) {
+        long count = countOccurrences(floor + room);
+        return new WifiPasswordResponse("PASS-" + floor + "-" + room + "-" + count);
     }
 
-    private String iterate(int cant) {
-        String cadena = "J";
-        for (int i = 0; i < cant; i++) {
-            StringBuilder sb = new StringBuilder();
-            for (int j = 0; j < cadena.length(); j++) {
-                char car = cadena.charAt(j);
-                switch (car) {
-                    case 'J':
-                        sb.append("JA");
-                        break;
-                    case 'A':
-                        sb.append("VA");
-                        break;
-                    case 'V':
-                        sb.append("VJ");
-                        break;
-                }
-            }
-            cadena = sb.toString();
-            System.out.println(cadena);
+    private long countOccurrences(int n) {
+        long resul;
+        final int opcionResta = 5 % 6;
+        final int opcionSuma = 8 % 6;
+        switch (n) {
+            case 1:
+                return 0;
+            case 2:
+                return 1;
+            default:
+                resul = (long) (Math.pow(2, (double) (n - 2)) - Math.pow(-1, (double) (n - 2))) / 3;
         }
-        return cadena;
-    }
+        int resto = n % 6;
 
-    private int countOccurrences(String cadena) {
-        /*int count = 0;
-        int j = 4;
-        for (int i = 0; i < cadena.length() - 3; i++) {
-            String subcadena = cadena.substring(i, j);
-            if(subcadena.equals("JAVA")) {
-                count++;
-            }
-            j++;
+        switch (resto) {
+            case opcionResta:
+                return resul - 1;
+            case opcionSuma:
+                return resul + 1;
+            default:
+                return resul;
         }
-        return count;
-        */
-        return org.springframework.util.StringUtils.countOccurrencesOf(cadena, "JAVA");
     }
 }
