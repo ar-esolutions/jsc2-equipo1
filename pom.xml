@@ -14,7 +14,7 @@
 	<version>2.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>jsc2-hotel</name>
+	<name>jsc2-equipo1-hotel</name>
 	<description>[JSC 2] Hotel</description>
 
 	<properties>
