@@ -40,7 +40,6 @@ public class RoomRepeatedService {
 
     public double precioDeReserva(String desde, String hasta, String tipo) {
 
-        int precio = 0;
         Calendar ingreso = Calendar.getInstance();
         Calendar salida = Calendar.getInstance();
 
@@ -95,9 +94,7 @@ public class RoomRepeatedService {
         ingreso.set(aDesde[0], aDesde[1] - 1, aDesde[2]);
         salida.set(aHasta[0], aHasta[1] - 1, aHasta[2]);
 
-        int resDias = (int) (salida.getTimeInMillis() - ingreso.getTimeInMillis()) / 86400000;
-
-        return resDias;
+        return (int) (salida.getTimeInMillis() - ingreso.getTimeInMillis()) / 86400000;
     }
 
 

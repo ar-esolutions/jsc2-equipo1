@@ -23,7 +23,7 @@ public class ReservaRepeatedService {
 	}
 
 
-	private void guardarReserva(int floor, int nro, String checkIn, String checkout){
+	private void guardarReserva(int floor, int nro, String checkIn, String checkout) {
 		JPAReserva r = new JPAReserva();
 
 		r.setFloor(floor);
@@ -34,20 +34,19 @@ public class ReservaRepeatedService {
 
 	}
 
-	private Date parseFecha(String stfecha){
+	private Date parseFecha(String stfecha) {
 
 		SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyyMMdd");
 		String strFecha = stfecha;
 		Date fecha = null;
 
+
 		try {
 			fecha = formatoDelTexto.parse(strFecha);
-
-		} catch (ParseException ex) {
-
-			ex.printStackTrace();
-
+		} catch (ParseException e) {
+			System.out.println(e);
 		}
+
 		return fecha;
 	}
 
@@ -102,14 +101,13 @@ public class ReservaRepeatedService {
 
 		}
 		return reservas;
-
 	}
 
-	private boolean validarReserva(int floor, int room, String desde, String hasta){
+	private boolean validarReserva(int floor, int room, String desde, String hasta) {
 
 		List<JPAReserva> reservas = buscarReserva(floor, room);
 
-		if(reservas.size() == 0){ //No existe reserva
+		if(reservas.isEmpty()){ //No existe reserva
 
 			guardarReserva(floor, room, desde, hasta); //Crea reserva
 
@@ -123,10 +121,7 @@ public class ReservaRepeatedService {
 			this.parseCalendar(convertir(desde),cDesde);
 			this.parseCalendar(convertir(hasta),cHasta);
 
-			boolean valido = validarIntervaloDeReserva(reservas, cDesde, cHasta);
-
-			if(valido == false){
-
+			if(!validarIntervaloDeReserva(reservas, cDesde, cHasta)){
 				return false;
 			}
 

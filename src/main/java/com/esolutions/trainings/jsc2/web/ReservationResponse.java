@@ -2,8 +2,8 @@ package com.esolutions.trainings.jsc2.web;
 
 public class ReservationResponse {
 
-    public boolean booked ;
-    public double price;
+    private boolean booked ;
+    private double price;
 
     public ReservationResponse() {
     }

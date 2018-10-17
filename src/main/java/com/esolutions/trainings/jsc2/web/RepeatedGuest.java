@@ -5,7 +5,7 @@ import java.util.List;
 
 public class RepeatedGuest {
 
-    public List lastNames= new LinkedList();
+    private List lastNames= new LinkedList();
 
     public RepeatedGuest() {
     }

@@ -50,8 +50,8 @@ public class GuestRepeatedService {
         return duplicateList
                 .entrySet()
                 .stream()
-                .filter(e -> e.getValue().size() > 1)
-                .map(e -> e.getKey())
+                .filter(e -> !e.getValue().isEmpty())
+                .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
     }
 
@@ -61,8 +61,6 @@ public class GuestRepeatedService {
         //Primary es para que respete dichos caracteres
         primaryCollator.setStrength(Collator.PRIMARY);
         repetitionsOfGuests.sort(primaryCollator);
-
-        //Collections.sort(repetitionsOfGuests);
 
         return repetitionsOfGuests;
     }

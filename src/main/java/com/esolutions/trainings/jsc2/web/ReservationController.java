@@ -17,7 +17,7 @@ public class ReservationController {
     }
 
 
-    @RequestMapping(method = RequestMethod.POST, value = "/floors/{floor}/rooms/{room}/book")
+    @PostMapping(value = "/floors/{floor}/rooms/{room}/book")
     public ReservationResponse saveReserva(@PathVariable int floor, @PathVariable int room, @RequestBody Map<String, String> parm) {
         return service.getReservationResponse(floor, room, parm);
     }

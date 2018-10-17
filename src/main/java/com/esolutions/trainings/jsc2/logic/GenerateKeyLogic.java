@@ -19,18 +19,13 @@ public class GenerateKeyLogic {
         Estados actual = Estados.Q0;
 
         for (int i = 0; i < chain.length(); i++) {
-
             switch (actual) {
                 case Q0:
-                    if (chain.charAt(i) == '1') {
-                        actual = Estados.Q1;
-                    }
+                    if (chain.charAt(i) == '1') actual = Estados.Q1;
                     break;
                 case Q1:
                     if (suma != 0) {
-                        if (suma > maximo) {
-                            maximo = suma;
-                        }
+                        if (suma > maximo) maximo = suma;
 
                         suma = 0;
                     }
@@ -41,11 +36,8 @@ public class GenerateKeyLogic {
                     }
                     break;
                 case Q2:
-                    if (chain.charAt(i) == '0') {
-                        suma++;
-                    } else {
-                        actual = Estados.Q1;
-                    }
+                    if (chain.charAt(i) == '0') suma++;
+                    else actual = Estados.Q1;
 
                     break;
             }

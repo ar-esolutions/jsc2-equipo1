@@ -20,7 +20,7 @@ public class JPARoom {
 	@Column(name = "nro", nullable = false, unique = true)
 	private int nro;
 
-	public JPARoom() {
+	private JPARoom() {
 
 	}
 
@@ -42,10 +42,7 @@ public class JPARoom {
 
 	public int getFloor() { return floor; }
 
-	public void setFloor()  { this.floor = floor; }
 
 	public int getNro() { return nro; }
-
-	public void setNro()  { this.nro = nro; }
 
 }
