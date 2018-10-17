@@ -36,7 +36,7 @@ public class ReservaRepeatedService {
 
 	private Date parseFecha(String stfecha) {
 
-		SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyyMMdd");
+		SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
 		String strFecha = stfecha;
 		Date fecha = null;
 
@@ -76,14 +76,13 @@ public class ReservaRepeatedService {
 
 	private boolean validarIntervaloFechas(Calendar fechaDesdeReserva, Calendar fechaHastaReserva,
                                       Calendar fechaDesdeConsulta, Calendar fechaHastaConsulta){
-		return (fechaHastaConsulta.compareTo(fechaDesdeReserva) < 0) && ((fechaHastaReserva.compareTo(fechaDesdeConsulta)) < 0);
+		return (fechaHastaConsulta.compareTo(fechaDesdeReserva) < 0) || ((fechaHastaReserva.compareTo(fechaDesdeConsulta)) < 0);
     }
 
 
 	private List<JPAReserva> buscarReserva(int floor, int room) {
 		//Esto no estaba inicializado , por eso tiraba null exception
 		List <JPAReserva> reservas = new ArrayList<>();
-		JPAReserva newReserva = new JPAReserva();
 
 		final List<JPAReserva> allJPAReserva = this.repository.findAll();
 		Iterator<JPAReserva> i = allJPAReserva.iterator();
@@ -91,11 +90,7 @@ public class ReservaRepeatedService {
 		while(i.hasNext() ){
 			r = i.next();
 			if (r.getFloor() == floor && r.getNro() == room){
-				newReserva.setNro(room);
-				newReserva.setFloor(floor);
-				newReserva.setFechaSalida(r.getFechaSalida());
-				newReserva.setFechaEntrada(r.getFechaEntrada());
-				reservas.add(newReserva);
+				reservas.add(r);
 
 			}
 

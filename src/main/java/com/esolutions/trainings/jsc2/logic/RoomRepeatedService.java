@@ -44,7 +44,7 @@ public class RoomRepeatedService {
         Calendar salida = Calendar.getInstance();
 
 
-        int resDias = dias(convertir(desde), convertir(hasta), ingreso, salida);
+        long resDias = dias(convertir(desde), convertir(hasta), ingreso, salida);
 
         int contador = ingreso.get(Calendar.DAY_OF_WEEK);
 
@@ -64,7 +64,7 @@ public class RoomRepeatedService {
             }
         }
 
-        int diasSinPromo = resDias - diasPromo;
+        long diasSinPromo = resDias - diasPromo;
 
         if (tipo.equals("SUITE")) {
 
@@ -89,12 +89,12 @@ public class RoomRepeatedService {
         return aux;
     }
 
-    public int dias(int[] aDesde, int[] aHasta, Calendar ingreso, Calendar salida) {
+    public long dias(int[] aDesde, int[] aHasta, Calendar ingreso, Calendar salida) {
 
         ingreso.set(aDesde[0], aDesde[1] - 1, aDesde[2]);
         salida.set(aHasta[0], aHasta[1] - 1, aHasta[2]);
 
-        return (int) (salida.getTimeInMillis() - ingreso.getTimeInMillis()) / 86400000;
+        return  (salida.getTimeInMillis() - ingreso.getTimeInMillis()) / 86400000;
     }
 
 

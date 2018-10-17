@@ -16,11 +16,11 @@ public class JPAReserva {
 	@Column(name = "nro", nullable = false, unique = true)
 	private int nro;
 
-	@Column(name = "fechaEntrada", nullable = false, unique = true)
+	@Column(name = "fechaentrada", nullable = false, unique = true)
 	private Date fechaEntrada;
 
 
-	@Column(name = "fechaSalida", nullable = false, unique = true)
+	@Column(name = "fechasalida", nullable = false, unique = true)
 	private Date fechaSalida;
 
 	public JPAReserva(int id, int floor, int nro, Date fechaEntrada, Date fechaSalida) {
