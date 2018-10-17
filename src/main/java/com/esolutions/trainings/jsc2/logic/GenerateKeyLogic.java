@@ -75,9 +75,23 @@ public class GenerateKeyLogic {
         return maximo;
     }
 
-    public WifiSsidResponse concatenateSsid(int floor, int room, int ceros){
-        return new WifiSsidResponse("HAND-"+ floor + "-" + room + "-"+ ceros);
+    private String concatenateSsid(int floor, int room, int ceros){
+        String ssid;
+        if (ceros == 0){
+            ssid = "HAND-"+ floor + "-" + room;
+        }
+        else
+        {
+            ssid = "HAND-"+ floor + "-" + room + "-" + ceros;
+        }
+        return ssid;
+    }
 
+    public WifiSsidResponse generateSsid(int floor, int room){
+        String cadena = parseBinaryFloorAndRoom(floor, room);
+        int zero = countZeros(cadena);
+        String ssid = concatenateSsid(floor, room, zero);
+        return new WifiSsidResponse(ssid);
     }
 
 }

@@ -36,8 +36,7 @@ public class RoomController {
     @RequestMapping(method = RequestMethod.GET, path = "/floors/{floor}/rooms/{room}/wifi/ssid")
     @ResponseBody
     public WifiSsidResponse calculateSsid(@PathVariable int floor, @PathVariable int room) {
-        //WifiPasswordLogic wifi = new WifiPasswordLogic();
-        return keyService.concatenateSsid(floor, room, 3);
+        return keyService.generateSsid(floor, room);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/desde/{desde}/hasta/{hasta}/tipo/{tipo}/book")
