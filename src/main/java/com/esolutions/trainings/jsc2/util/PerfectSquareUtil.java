@@ -1,7 +1,7 @@
 package com.esolutions.trainings.jsc2.util;
 
-public class JavaUtils {
-    private JavaUtils() {
+public class PerfectSquareUtil {
+    private PerfectSquareUtil() {
     }
 
     public static boolean isPerfectSquare(long n) {

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.Map;
 import java.util.TreeMap;
 
-import static com.esolutions.trainings.jsc2.util.JavaUtils.isPerfectSquare;
+import static com.esolutions.trainings.jsc2.util.PerfectSquareUtil.isPerfectSquare;
 
 public class HaveANiceDayHotel {
 
