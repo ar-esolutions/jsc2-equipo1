@@ -1,7 +1,6 @@
 package com.esolutions.trainings.jsc2.web;
 
 import com.esolutions.trainings.jsc2.logic.GenerateKeyLogic;
-import com.esolutions.trainings.jsc2.logic.RoomRepeatedService;
 import com.esolutions.trainings.jsc2.logic.WifiPasswordLogic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,13 +12,11 @@ import static com.esolutions.trainings.jsc2.logic.HaveANiceDayHotel.getGuestResp
 
 @RestController
 public class RoomController {
-    private final RoomRepeatedService service;
     private final WifiPasswordLogic wifiService;
     private final GenerateKeyLogic keyService;
 
     @Autowired
-    public RoomController(RoomRepeatedService service) {
-        this.service = service;
+    public RoomController() {
         this.wifiService = new WifiPasswordLogic();
         this.keyService = new GenerateKeyLogic();
     }
@@ -39,4 +36,6 @@ public class RoomController {
     public WifiSsidResponse calculateSsid(@PathVariable int floor, @PathVariable int room) {
         return keyService.generateSsid(floor, room);
     }
+
+
 }
