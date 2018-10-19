@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
@@ -38,11 +40,11 @@ public class RoomRepeatedService {
         return tipo;
     }
 
-    public float precioDeReserva(String desde, String hasta, String tipo) {
+    public BigDecimal precioDeReserva(String desde, String hasta, String tipo) {
 
         Calendar ingreso = Calendar.getInstance();
         Calendar salida = Calendar.getInstance();
-
+        double total;
 
         long resDias = dias(convertir(desde), convertir(hasta), ingreso, salida);
 
@@ -67,11 +69,14 @@ public class RoomRepeatedService {
         long diasSinPromo = resDias - diasPromo;
 
         if (tipo.equals("SUITE")) {
+            total = diasSinPromo * pSuiteSinPromo + diasPromo * pSuitePromo;
+            BigDecimal formatNumber = new BigDecimal(total);
+            return formatNumber.setScale(2, RoundingMode.DOWN);
 
-            return diasSinPromo * pSuiteSinPromo + diasPromo * pSuitePromo;
         } else {
-
-            return diasSinPromo * pEstSinPromo + diasPromo * pEstPromo;
+            total = diasSinPromo * pSuiteSinPromo + diasPromo * pSuitePromo;
+            BigDecimal formatNumber = new BigDecimal(total);
+            return formatNumber.setScale(2, RoundingMode.DOWN);
         }
     }
 

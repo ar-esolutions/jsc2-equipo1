@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -161,7 +162,7 @@ public class ReservaRepeatedService {
 
 		boolean reserved = validarReserva(floor, room, checkIn, checkOut);
 		String tipo = roomService.busquedaRooms(floor,room);
-		double precio = roomService.precioDeReserva(checkIn, checkOut, tipo);
+		BigDecimal precio = roomService.precioDeReserva(checkIn, checkOut, tipo);
 
 		reservationResponse.setBooked(reserved);
 		reservationResponse.setPrice(precio);

@@ -1,14 +1,16 @@
 package com.esolutions.trainings.jsc2.web;
 
+import java.math.BigDecimal;
+
 public class ReservationResponse {
 
     private boolean booked ;
-    private double price;
+    private BigDecimal price;
 
     public ReservationResponse() {
     }
 
-    public ReservationResponse(boolean booked, double price) {
+    public ReservationResponse(boolean booked, BigDecimal price) {
         this.booked = booked;
         this.price = price;
     }
@@ -21,11 +23,11 @@ public class ReservationResponse {
         this.booked = booked;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 }
