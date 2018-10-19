@@ -12,10 +12,10 @@ import java.util.List;
 @Service
 public class RoomRepeatedService {
     private final JpaRepository<JPARoom, Long> repository;
-    private double pSuitePromo = 202.99;
-    private double pEstPromo = 191.99;
-    private double pSuiteSinPromo = 187.99;
-    private double pEstSinPromo = 150.99;
+    private float pSuitePromo = 202.99f;
+    private float pEstPromo = 191.99f;
+    private float pSuiteSinPromo = 187.99f;
+    private float pEstSinPromo = 150.99f;
 
 
     @Autowired
@@ -38,7 +38,7 @@ public class RoomRepeatedService {
         return tipo;
     }
 
-    public double precioDeReserva(String desde, String hasta, String tipo) {
+    public float precioDeReserva(String desde, String hasta, String tipo) {
 
         Calendar ingreso = Calendar.getInstance();
         Calendar salida = Calendar.getInstance();
