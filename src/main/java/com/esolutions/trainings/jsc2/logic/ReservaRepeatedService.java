@@ -3,6 +3,7 @@ package com.esolutions.trainings.jsc2.logic;
 
 import com.esolutions.trainings.jsc2.model.JPAReserva;
 import com.esolutions.trainings.jsc2.web.ReservationResponse;
+import org.apache.logging.log4j.LoggingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -10,11 +11,14 @@ import org.springframework.stereotype.Service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Service
 public class ReservaRepeatedService {
 	private final JpaRepository<JPAReserva, Long> repository;
 	private final RoomRepeatedService roomService;
+	private static Logger logger = Logger.getLogger(LoggingException.class.getName());
 
 	@Autowired
 	public ReservaRepeatedService(JpaRepository<JPAReserva, Long> repository, RoomRepeatedService roomService) {
@@ -37,14 +41,15 @@ public class ReservaRepeatedService {
 	private Date parseFecha(String stfecha) {
 
 		SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
-		String strFecha = stfecha;
 		Date fecha = null;
 
 
 		try {
-			fecha = formatoDelTexto.parse(strFecha);
+			fecha = formatoDelTexto.parse(stfecha);
 		} catch (ParseException e) {
-			System.out.println(e);
+			if (logger.isLoggable(Level.SEVERE)) {
+				logger.log(Level.SEVERE, "Error parsing date", e);
+			}
 		}
 
 		return fecha;
