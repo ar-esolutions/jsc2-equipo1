@@ -16,37 +16,26 @@ public class GenerateKeyLogic {
         int maximo = 0;
 
         final Estados eFinal = Estados.Q1;
-        Estados actual = Estados.Q0;
+        Estados actual = Estados.Q1;
 
         for (int i = 0; i < chain.length(); i++) {
-            switch (actual) {
-                case Q0:
-                    if (chain.charAt(i) == '1') actual = Estados.Q1;
-                    break;
-                case Q1:
-                    if (suma != 0) {
-                        if (suma > maximo) maximo = suma;
-
-                        suma = 0;
-                    }
-
-                    if (chain.charAt(i) == '0') {
-                        suma++;
-                        actual = Estados.Q2;
-                    }
-                    break;
-                case Q2:
-                    if (chain.charAt(i) == '0') suma++;
-                    else actual = Estados.Q1;
-
-                    break;
+            if (actual == Estados.Q1) {
+                if (suma > maximo) {
+                    maximo = suma;
+                    suma = 0;
+                }
+                if (chain.charAt(i) == '0') {
+                    suma++;
+                    actual = Estados.Q2;
+                }
+            } else {
+                if (chain.charAt(i) == '0') suma++;
+                else actual = Estados.Q1;
             }
-
             if ((i == chain.length() - 1) && actual == eFinal && suma > maximo) {
                 maximo = suma;
             }
         }
-
         return maximo;
     }
 
