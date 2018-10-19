@@ -50,7 +50,7 @@ public class GuestRepeatedService {
         return duplicateList
                 .entrySet()
                 .stream()
-                .filter(e -> !e.getValue().isEmpty())
+                .filter(e -> e.getValue().size()>1)
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
     }
@@ -86,7 +86,7 @@ public class GuestRepeatedService {
 
     private String getLastNameFromFullName(Guest guest) {
         String fullName = guest.getName();
-        return fullName.split(",")[0];
+        return fullName.split(",")[0].replace(" ","");
     }
 
     //Agrega mayuscula al primer digito de una cadena
