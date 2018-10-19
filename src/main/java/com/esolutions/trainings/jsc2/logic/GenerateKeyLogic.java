@@ -22,8 +22,8 @@ public class GenerateKeyLogic {
             if (actual == Estados.Q1) {
                 if (suma > maximo) {
                     maximo = suma;
-                    suma = 0;
                 }
+                suma = 0;
                 if (chain.charAt(i) == '0') {
                     suma++;
                     actual = Estados.Q2;
