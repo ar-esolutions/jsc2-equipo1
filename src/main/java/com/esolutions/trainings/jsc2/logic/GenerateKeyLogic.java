@@ -27,19 +27,22 @@ public class GenerateKeyLogic {
             }
             if (chain.charAt(i) == '0') {
                 suma++;
-                if (Estados.Q1.equals(actual)) {
-                    actual = Estados.Q2;
-                }
+                actual = validateState(actual, Estados.Q1, Estados.Q2);
             } else {
-                if (Estados.Q2.equals(actual)) {
-                    actual = Estados.Q1;
-                }
+                actual = validateState(actual, Estados.Q2, Estados.Q1);
             }
             if ((i == chain.length() - 1) && actual == eFinal && suma > maximo) {
                 maximo = suma;
             }
         }
         return maximo;
+    }
+
+    private Estados validateState(Estados actual, Estados current, Estados future) {
+        if (current.equals(actual)) {
+            actual = future;
+        }
+        return actual;
     }
 
     private String concatenateSsid(int floor, int room, int ceros) {
