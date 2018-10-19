@@ -4,7 +4,10 @@ import com.esolutions.trainings.jsc2.logic.GenerateKeyLogic;
 import com.esolutions.trainings.jsc2.logic.RoomRepeatedService;
 import com.esolutions.trainings.jsc2.logic.WifiPasswordLogic;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import static com.esolutions.trainings.jsc2.logic.HaveANiceDayHotel.getGuestResponse;
 
@@ -36,12 +39,4 @@ public class RoomController {
     public WifiSsidResponse calculateSsid(@PathVariable int floor, @PathVariable int room) {
         return keyService.generateSsid(floor, room);
     }
-
-    @PostMapping(value = "/desde/{desde}/hasta/{hasta}/tipo/{tipo}/book")
-    public void getPrecio(@PathVariable String desde, @PathVariable String hasta, @PathVariable String tipo) {
-
-        this.service.precioDeReserva(desde, hasta, tipo);
-    }
-
-
 }
