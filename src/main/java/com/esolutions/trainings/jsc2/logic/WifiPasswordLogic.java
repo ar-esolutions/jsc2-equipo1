@@ -4,7 +4,7 @@ import com.esolutions.trainings.jsc2.web.WifiPasswordResponse;
 
 public class WifiPasswordLogic {
 
-    public WifiPasswordLogic() {
+    private WifiPasswordLogic() {
     }
 
     public WifiPasswordResponse calculatePassword(int floor, int room) {
