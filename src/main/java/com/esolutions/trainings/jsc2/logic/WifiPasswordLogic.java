@@ -4,7 +4,8 @@ import com.esolutions.trainings.jsc2.web.WifiPasswordResponse;
 
 public class WifiPasswordLogic {
 
-    private WifiPasswordLogic() {
+    public WifiPasswordLogic() {
+        //Esta vacio por que es un constructor para inicializar en otra clase
     }
 
     public WifiPasswordResponse calculatePassword(int floor, int room) {
