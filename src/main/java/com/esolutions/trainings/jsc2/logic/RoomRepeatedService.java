@@ -70,12 +70,12 @@ public class RoomRepeatedService {
 
         if (tipo.equals("SUITE")) {
             total = diasSinPromo * pSuiteSinPromo + diasPromo * pSuitePromo;
-            BigDecimal formatNumber = new BigDecimal(total);
+            BigDecimal formatNumber = BigDecimal.valueOf(total);
             return formatNumber.setScale(2, RoundingMode.DOWN);
 
         } else {
-            total = diasSinPromo * pSuiteSinPromo + diasPromo * pSuitePromo;
-            BigDecimal formatNumber = new BigDecimal(total);
+            total = diasSinPromo * pEstSinPromo+ diasPromo * pEstPromo;
+            BigDecimal formatNumber = BigDecimal.valueOf(total);
             return formatNumber.setScale(2, RoundingMode.DOWN);
         }
     }
