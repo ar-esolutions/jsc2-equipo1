@@ -22,15 +22,18 @@ public class GenerateKeyLogic {
             if (actual == Estados.Q1) {
                 if (suma > maximo) {
                     maximo = suma;
-                    suma = 0;
                 }
-                if (chain.charAt(i) == '0') {
-                    suma++;
+                suma = 0;
+            }
+            if (chain.charAt(i) == '0') {
+                suma++;
+                if (Estados.Q1.equals(actual)) {
                     actual = Estados.Q2;
                 }
             } else {
-                if (chain.charAt(i) == '0') suma++;
-                else actual = Estados.Q1;
+                if (Estados.Q2.equals(actual)) {
+                    actual = Estados.Q1;
+                }
             }
             if ((i == chain.length() - 1) && actual == eFinal && suma > maximo) {
                 maximo = suma;
